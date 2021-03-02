@@ -1,0 +1,64 @@
+- name: playbook for gitlab.yml
+  hosts: user  #this is the target host on which you want to install GitLab that is written in the inventory file
+  vars:
+   pkgs:   
+    - curl
+    - policycoreutils
+    - openssh-server
+    - perl
+    - postfix
+   rule:
+    - http
+    - https
+  tasks:
+   - name: install required dependencies
+     yum:
+      name: "{{ item }}"
+      state: present
+     loop: "{{ pkgs }}"
+
+   - name: start and enable sshd, postfix
+     service:
+      name: "{{ item }}"
+      state: started
+      enabled: true
+     loop:
+      - sshd
+      - postfix
+
+   - name: restart firewall
+     firewalld:
+      state: enabled
+      permanent: true
+      immediate: true
+      service: "{{ item }}"
+     loop: "{{ rule }}"
+
+   - name: add GitLab package repo
+     get_url:
+      url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh
+      dest: /home/devops/script.rpm.sh  # this is the destination path where you want to add GitLab package repo
+      mode: 0755
+
+   - name: command bash
+     become: true
+     command: bash /home/devops/script.rpm.sh  #by using bash, you can directly use every possible tool you have on the command line for your script
+
+   - name: install gitlab community package
+     yum:
+      name: gitlab-ce
+      state: present
+
+   - name: change external_url 
+     lineinfile:
+      path: /etc/gitlab/gitlab.rb
+      line: " external_url 'http://18.132.213.203'"  #write the IP of your server or sitename through which you want to access GitLab UI
+      state: present
+      regexp: 'external_url'
+      insertafter: true
+
+   - name: reconfigure gitlab
+     command: gitlab-ctl reconfigure  #To update the changes, we use reconfigure
+
+   - name: start gitlab
+     command: gitlab-ctl start
