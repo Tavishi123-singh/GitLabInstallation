@@ -14,7 +14,7 @@ Ansible is an open-source automation tool, or platform, used for IT tasks such a
     - Scientific Linux (please use the CentOS packages and instructions)
     - Oracle Linux (please use the CentOS packages and instructions)
 
-* Software requirements
+* Software requirements:
   Ruby versions
     - From GitLab 13.6:
       Ruby 2.7 and later is required.
@@ -22,7 +22,7 @@ Ansible is an open-source automation tool, or platform, used for IT tasks such a
       Ruby 2.6 and later is required.
   You must use the standard MRI implementation of Ruby. We love JRuby and Rubinius, but GitLab needs several Gems that have native extensions
 
-* Go versions
+* Go versions:
   The minimum required Go version is 1.13.
 
 * Git versions
@@ -32,11 +32,11 @@ Ansible is an open-source automation tool, or platform, used for IT tasks such a
       Git 2.24.x and later is required.
       Git 2.28.x and later is recommended.
       
-* Node.js versions
+* Node.js versions:
   Beginning in GitLab 12.9, we only support Node.js 10.13.0 or higher, and we have dropped support for Node.js 8. (Node.js 6 support was dropped in GitLab 11.8)
   We recommend Node 12.x, as it’s faster.
   
-* Redis versions
+* Redis versions:
   GitLab 13.0 and later requires Redis version 4.0 or higher.
   Redis version 5.0 or higher is recommended
   
@@ -60,6 +60,6 @@ Ansible is an open-source automation tool, or platform, used for IT tasks such a
     - PostgreSQL Requirements:
       The server running PostgreSQL should have at least 5-10 GB of storage available, though the exact requirements depend on the number of users. We highly recommend users to use the minimum PostgreSQL versions specified below as these are the versions used for development and testing.
 
-      GitLab version	Minimum PostgreSQL version
-      10.0	          9.6
-      13.0	          11
+    + GitLab version	Minimum PostgreSQL version
+      1. 10.0	          9.6
+      2. 13.0	          11
