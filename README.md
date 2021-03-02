@@ -60,6 +60,6 @@ Ansible is an open-source automation tool, or platform, used for IT tasks such a
     - PostgreSQL Requirements:
       The server running PostgreSQL should have at least 5-10 GB of storage available, though the exact requirements depend on the number of users. We highly recommend users to use the minimum PostgreSQL versions specified below as these are the versions used for development and testing.
 
-     GitLab version:	Minimum PostgreSQL version:
+    + GitLab version:	Minimum PostgreSQL version:
       1. 10.0	        1. 9.6
       2. 13.0	        2. 11
