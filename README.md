@@ -3,7 +3,18 @@ This is the ansible script that will install the GitLab on Linux server in one g
 
 Ansible is an open-source automation tool, or platform, used for IT tasks such as configuration management, application deployment, intraservice orchestration, and provisioning. Ansible works by connecting to your nodes and pushing out small programs, called "Ansible modules" to them. Ansible then executes these modules (over SSH by default), and removes them when finished. Your library of modules can reside on any machine, and there are no servers, daemons, or databases required. This tool is very simple to use yet powerful enough to automate complex multi-tier IT application environments.
 
-# Requirements
+Ansible should be installed on the controller machine from where you run the playbook, if not then install it by these commands:
+$ sudo yum install python3-pip
+$ sudo pip3 install ansible
+
+Check the ansible version by:  $ ansible --version
+You have to create inventory and ansible.cfg files, can see the ansible documentation for the same.
+Also you have to copy id of target host for ssh:  $ ssh-copy-id username@hostname     or $ ssh-copy-id username@server_ip
+Always check that the target host is pingable by: $ ansible target_host -m ping
+
+Now, you are good to go run your playbook on the controller machine.
+
+# Requirements for GitLab
 * Operating Systems
   Supported Linux distributions
     - Ubuntu (16.04/18.04/20.04)
@@ -60,6 +71,5 @@ Ansible is an open-source automation tool, or platform, used for IT tasks such a
     - PostgreSQL Requirements:
       The server running PostgreSQL should have at least 5-10 GB of storage available, though the exact requirements depend on the number of users. We highly recommend users to use the minimum PostgreSQL versions specified below as these are the versions used for development and testing.
 
-      GitLab version | Minimum PostgreSQL version
-      10.0 | 9.6
-      13.0 | 11
+        + GitLab version: 10.0  Minimum PostgreSQL version: 9.6
+        + GitLab version: 13.0  Minimum PostgreSQL version: 11
