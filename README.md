@@ -3,16 +3,16 @@ This is the ansible script that will install the GitLab on Linux server in one g
 
 Ansible is an open-source automation tool, or platform, used for IT tasks such as configuration management, application deployment, intraservice orchestration, and provisioning. Ansible works by connecting to your nodes and pushing out small programs, called "Ansible modules" to them. Ansible then executes these modules (over SSH by default), and removes them when finished. Your library of modules can reside on any machine, and there are no servers, daemons, or databases required. This tool is very simple to use yet powerful enough to automate complex multi-tier IT application environments.
 
-Ansible should be installed on the controller machine from where you run the playbook, if not then install it by these commands:
-$ sudo yum install python3-pip
-$ sudo pip3 install ansible
+* Ansible should be installed on the controller machine from where you run the playbook, if not then install it by these commands:
+  $ sudo yum install python3-pip
+  $ sudo pip3 install ansible
 
-Check the ansible version by:  $ ansible --version
-You have to create inventory and ansible.cfg files, can see the ansible documentation for the same.
-Also you have to copy id of target host for ssh:  $ ssh-copy-id username@hostname     or $ ssh-copy-id username@server_ip
-Always check that the target host is pingable by: $ ansible target_host -m ping
+* Check the ansible version by:  $ ansible --version
+* You have to create inventory and ansible.cfg files, can see the ansible documentation for the same.
+* Also you have to copy id of target host for ssh:  $ ssh-copy-id username@hostname     or $ ssh-copy-id username@server_ip
+* Always check that the target host is pingable by: $ ansible target_host -m ping
 
-Now, you are good to go run your playbook on the controller machine.
+* Now, you are good to go run your playbook on the controller machine.
 
 # Requirements for GitLab
 * Operating Systems
